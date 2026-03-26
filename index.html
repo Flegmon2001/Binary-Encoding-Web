@@ -8,27 +8,31 @@
 <body>
 
 <nav class="navbar">
-    <div class="nav-left" href="https://flegmon2001.github.io/MainFleg-Web/>MainFleg-Web</div>
+    <div class="nav-left" href="https://flegmon2001.github.io/MainFleg-Web/">Fleg-Web</div>
 </nav>
 
 <div class="main">
     <div class="card">
+
         <h2 id="modeLabel">Text → Binary</h2>
 
-        <!-- INPUT FIELD -->
-        <div id="inputContainer">
-            <textarea id="inputText" placeholder="Enter text..."></textarea>
+        <!-- INFO BOX -->
+        <div id="infoBox">
+            Letters: ":" | Symbols: ";" | Numbers: "(" | Words: "/"
         </div>
 
+        <!-- INPUT -->
+        <textarea id="inputText" placeholder="Enter text..."></textarea>
+
+        <!-- BUTTONS -->
         <div class="buttons">
             <button onclick="convertText()">Convert</button>
-            <button class="switch" onclick="switchMode()">⇄ Switch</button>
+            <button class="switch" onclick="switchMode()">⇄</button>
         </div>
 
-        <!-- OUTPUT FIELD -->
-        <div id="outputContainer">
-            <textarea id="outputText" placeholder="Binary output..." readonly></textarea>
-        </div>
+        <!-- OUTPUT -->
+        <textarea id="outputText" placeholder="Binary output..." readonly></textarea>
+
     </div>
 </div>
 
