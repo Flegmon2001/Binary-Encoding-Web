@@ -1,115 +1,17 @@
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* BODY */
-body {
-    font-family: 'Segoe UI', sans-serif;
-    height: 100vh;
-    background: radial-gradient(circle at 30% 20%, #1a0033, #000000 60%);
-    overflow: hidden;
-    color: white;
-}
-
-/* REAL STAR FIELD */
-body::before {
-    content: "";
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(2px 2px at 20% 30%, white, transparent),
-        radial-gradient(2px 2px at 70% 60%, white, transparent),
-        radial-gradient(1px 1px at 40% 80%, white, transparent),
-        radial-gradient(1px 1px at 90% 20%, white, transparent),
-        radial-gradient(2px 2px at 10% 70%, white, transparent);
-    animation: moveStars 60s linear infinite;
-    opacity: 0.6;
-}
-
-@keyframes moveStars {
-    from { transform: translateY(0); }
-    to { transform: translateY(-200px); }
-}
-
-/* NAVBAR */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    padding: 15px 25px;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.nav-left {
-    font-weight: bold;
-    font-size: 18px;
-    color: #8ab4ff;
-}
-
-/* MAIN CENTERING */
-.main {
+/* BUTTON ROW */
+.buttons {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    gap: 10px;
 }
 
-/* CARD */
-.card {
-    background: rgba(255,255,255,0.05);
-    padding: 30px;
-    border-radius: 20px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 40px rgba(100, 80, 255, 0.4);
-    text-align: center;
-    width: 90%;
-    max-width: 600px;
+/* SWITCH BUTTON STYLE */
+.switch {
+    background: linear-gradient(45deg, #ff7b7b, #ffb347);
 }
 
-/* TITLE */
-h1 {
-    margin-bottom: 20px;
-    font-size: 32px;
-    color: #c7bfff;
-}
-
-/* TEXTAREAS */
-textarea {
-    width: 100%;
-    height: 120px;
-    margin: 10px 0;
-    padding: 12px;
-    border-radius: 12px;
-    border: none;
-    outline: none;
-    resize: none;
-    background: rgba(0,0,0,0.6);
-    color: white;
-    font-size: 15px;
-}
-
-/* BUTTON */
-button {
-    margin: 15px 0;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 30px;
-    background: linear-gradient(45deg, #6a5cff, #00cfff);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.25s;
-}
-
-button:hover {
-    transform: scale(1.07);
-    box-shadow: 0 0 20px rgba(100, 150, 255, 0.8);
+/* SWAP ANIMATION */
+.swap {
+    display: flex;
+    flex-direction: column-reverse;
 }
