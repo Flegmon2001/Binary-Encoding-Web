@@ -5,50 +5,36 @@ function toBinary(char) {
 }
 
 function fromBinary(binary) {
-    return binary.split(":")
-        .map(b => String.fromCharCode(parseInt(b, 2)))
-        .join("");
+    return binary.split(":").map(b => String.fromCharCode(parseInt(b,2))).join("");
 }
 
 function convertText() {
     let input = document.getElementById("inputText").value;
+    let outputField = document.getElementById("outputText");
 
     if (isTextToBinary) {
         // TEXT → BINARY
         let words = input.split(" ");
-
-        let result = words.map(word => {
-            let letters = word.split("").map(letter => toBinary(letter));
-            return letters.join(":");
-        });
-
-        document.getElementById("outputText").value = result.join(" / ");
-
+        let result = words.map(word => word.split("").map(toBinary).join(":"));
+        outputField.value = result.join(" / ");
     } else {
         // BINARY → TEXT
         let words = input.split(" / ");
-
-        let result = words.map(word => {
-            return fromBinary(word);
-        });
-
-        document.getElementById("outputText").value = result.join(" ");
+        let result = words.map(word => fromBinary(word));
+        outputField.value = result.join(" ");
     }
 }
 
 function switchMode() {
     isTextToBinary = !isTextToBinary;
 
-    let title = document.getElementById("title");
-    let container = document.querySelector(".card");
+    // Swap visual order
+    document.querySelector(".card").classList.toggle("swap");
 
-    // Change title
-    title.textContent = isTextToBinary ? "Text → Binary" : "Binary → Text";
+    // Update mode label
+    document.getElementById("modeLabel").textContent = isTextToBinary ? "Text → Binary" : "Binary → Text";
 
-    // Swap fields visually
-    container.classList.toggle("swap");
-
-    // Swap placeholder text
+    // Swap placeholders
     let input = document.getElementById("inputText");
     let output = document.getElementById("outputText");
 
@@ -60,7 +46,7 @@ function switchMode() {
         output.placeholder = "Text output...";
     }
 
-    // Clear fields (optional but cleaner)
+    // Clear both fields for clarity
     input.value = "";
     output.value = "";
 }
