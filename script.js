@@ -1,93 +1,78 @@
 let isTextToBinary = true;
 
-// Detect type of character
 function getSeparator(char) {
-    if (/[a-zA-Z]/.test(char)) return ":";  // letters
-    if (/[0-9]/.test(char)) return "(";    // numbers
-    return ";";                             // symbols
+    if (/[a-zA-Z]/.test(char)) return ":";
+    if (/[0-9]/.test(char)) return "(";
+    return ";";
 }
 
-// Convert character to binary
 function toBinary(char) {
     return char.charCodeAt(0).toString(2).padStart(8, '0');
 }
 
-// Convert binary string back to character
 function fromBinary(binary) {
     return String.fromCharCode(parseInt(binary, 2));
 }
 
-// Convert entire text to binary with separators
 function textToBinary(text) {
     let words = text.split(" ");
-    let result = words.map(word => {
-        let letters = word.split("").map(char => toBinary(char));
-        let separated = "";
+    return words.map(word => {
+        let result = "";
         for (let i = 0; i < word.length; i++) {
-            separated += letters[i];
+            result += toBinary(word[i]);
             if (i < word.length - 1) {
-                separated += getSeparator(word[i]);
+                result += getSeparator(word[i]);
             }
         }
-        return separated;
-    });
-    return result.join(" / ");
+        return result;
+    }).join(" / ");
 }
 
-// Convert binary string with separators back to text
 function binaryToText(binaryInput) {
     let words = binaryInput.split(" / ");
-    let result = words.map(word => {
-        let letters = [];
+    return words.map(word => {
+        let chars = [];
         let current = "";
-        for (let i = 0; i < word.length; i++) {
-            let c = word[i];
-            // separator characters
+
+        for (let c of word) {
             if (c === ":" || c === ";" || c === "(") {
-                if (current !== "") letters.push(fromBinary(current));
+                if (current) chars.push(fromBinary(current));
                 current = "";
             } else {
                 current += c;
             }
         }
-        if (current !== "") letters.push(fromBinary(current));
-        return letters.join("");
-    });
-    return result.join(" ");
+        if (current) chars.push(fromBinary(current));
+
+        return chars.join("");
+    }).join(" ");
 }
 
-// Main convert function
 function convertText() {
     let input = document.getElementById("inputText").value;
-    let outputField = document.getElementById("outputText");
+    let output = document.getElementById("outputText");
 
-    if (isTextToBinary) {
-        outputField.value = textToBinary(input);
-    } else {
-        outputField.value = binaryToText(input);
-    }
+    output.value = isTextToBinary
+        ? textToBinary(input)
+        : binaryToText(input);
 }
 
-// Switch mode
 function switchMode() {
     isTextToBinary = !isTextToBinary;
 
-    let card = document.querySelector(".card");
-    card.classList.toggle("swap");
+    document.getElementById("modeLabel").textContent =
+        isTextToBinary ? "Text → Binary" : "Binary → Text";
 
-    let modeLabel = document.getElementById("modeLabel");
-    modeLabel.textContent = isTextToBinary ? "Text → Binary" : "Binary → Text";
+    document.getElementById("infoBox").textContent =
+        isTextToBinary
+        ? "Letters: ':' | Symbols: ';' | Numbers: '(' | Words: '/'"
+        : "Use ':' for letters, ';' for symbols, '(' for numbers, '/' for words";
 
     let input = document.getElementById("inputText");
     let output = document.getElementById("outputText");
 
-    if (isTextToBinary) {
-        input.placeholder = "Enter text...";
-        output.placeholder = "Binary output...";
-    } else {
-        input.placeholder = "Enter binary...";
-        output.placeholder = "Text output...";
-    }
+    input.placeholder = isTextToBinary ? "Enter text..." : "Enter binary...";
+    output.placeholder = isTextToBinary ? "Binary output..." : "Text output...";
 
     input.value = "";
     output.value = "";
