@@ -5,7 +5,6 @@
     box-sizing: border-box;
 }
 
-/* BODY */
 body {
     font-family: 'Segoe UI', sans-serif;
     height: 100vh;
@@ -14,7 +13,7 @@ body {
     color: white;
 }
 
-/* REAL STAR FIELD */
+/* STARS */
 body::before {
     content: "";
     position: fixed;
@@ -54,7 +53,7 @@ body::before {
     color: #8ab4ff;
 }
 
-/* MAIN CENTERING */
+/* MAIN */
 .main {
     display: flex;
     justify-content: center;
@@ -62,7 +61,6 @@ body::before {
     height: 100vh;
 }
 
-/* CARD */
 .card {
     background: rgba(255,255,255,0.05);
     padding: 30px;
@@ -74,10 +72,9 @@ body::before {
     max-width: 600px;
 }
 
-/* TITLE */
-h1 {
-    margin-bottom: 20px;
-    font-size: 32px;
+/* HEADINGS */
+h2 {
+    margin-bottom: 15px;
     color: #c7bfff;
 }
 
@@ -96,9 +93,15 @@ textarea {
     font-size: 15px;
 }
 
-/* BUTTON */
+/* BUTTON ROW */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* BUTTONS */
 button {
-    margin: 15px 0;
     padding: 12px 25px;
     border: none;
     border-radius: 30px;
@@ -114,20 +117,14 @@ button:hover {
     box-shadow: 0 0 20px rgba(100, 150, 255, 0.8);
 }
 
-/* BUTTON ROW */
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-/* SWITCH BUTTON STYLE */
 .switch {
     background: linear-gradient(45deg, #ff7b7b, #ffb347);
 }
 
-/* SWAP ANIMATION */
-.swap {
-    display: flex;
-    flex-direction: column-reverse;
+/* SWAP EFFECT */
+.swap #inputContainer {
+    order: 2;
+}
+.swap #outputContainer {
+    order: 1;
 }
