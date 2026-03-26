@@ -7,21 +7,26 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
     <div class="nav-left">🌌 BinaryGalaxy</div>
 </nav>
 
-<!-- MAIN -->
 <div class="main">
     <div class="card">
-        <h1>Text → Binary</h1>
+        <h1 id="title">Text → Binary</h1>
 
-        <textarea id="inputText" placeholder="Enter your text..."></textarea>
+        <div id="inputContainer">
+            <textarea id="inputText" placeholder="Enter text..."></textarea>
+        </div>
 
-        <button onclick="convertText()">Convert</button>
+        <div class="buttons">
+            <button onclick="convertText()">Convert</button>
+            <button class="switch" onclick="switchMode()">⇄ Switch</button>
+        </div>
 
-        <textarea id="outputText" placeholder="Binary output..." readonly></textarea>
+        <div id="outputContainer">
+            <textarea id="outputText" placeholder="Binary output..." readonly></textarea>
+        </div>
     </div>
 </div>
 
