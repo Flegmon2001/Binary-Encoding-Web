@@ -2,21 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Text to Binary Converter</title>
+    <title>Galaxy Binary Converter</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Text → Binary Converter</h1>
+<!-- NAVBAR -->
+<div class="navbar">
+    <span class="logo">🌌 BinaryGalaxy</span>
+</div>
 
-<textarea id="inputText" placeholder="Enter your text here..."></textarea>
+<!-- MAIN CONTAINER -->
+<div class="container">
+    <h1>Text → Binary</h1>
 
-<br>
+    <textarea id="inputText" placeholder="Enter your text..."></textarea>
 
-<button onclick="convertText()">Convert</button>
+    <button onclick="convertText()">Convert</button>
 
-<h2>Binary Output:</h2>
-<textarea id="outputText" readonly></textarea>
+    <h2>Output</h2>
+    <textarea id="outputText" readonly></textarea>
+</div>
 
 <script src="script.js"></script>
 
