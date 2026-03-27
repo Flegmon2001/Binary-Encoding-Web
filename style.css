@@ -15,10 +15,17 @@ body {
 
 /* NAVBAR */
 .navbar {
+    position: fixed;   /* 🔥 wichtig */
+    top: 0;
+    left: 0;
+    width: 100%;
+
     padding: 15px 20px;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.7);
     backdrop-filter: blur(10px);
+
     border-bottom: 1px solid rgba(255,255,255,0.1);
+    z-index: 1000;     /* 🔥 verhindert Überdecken */
 }
 
 .nav-left {
